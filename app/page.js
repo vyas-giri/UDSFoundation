@@ -1,101 +1,165 @@
-import Image from "next/image";
+"use client";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { ProgressCircle } from "@/components/ProgressCircle";
+import { useState } from "react";
+
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Send form data to the API route
+    const response = await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Email sent successfully!");
+    } else {
+      alert("Failed to send email.");
+    }
+  };
+
+
+  return (
+    <div className="text-black">
+      <Navbar />
+      <div>
+        <div className="bg-gray-50 py-16">
+          <div className="mx-auto max-w-2xl px-3 sm:px-6 lg:max-w-7xl lg:px-8">
+            <p className="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
+              Your progress so far
+            </p>
+            <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+              <div className="relative lg:row-span-2">
+                <div className="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"></div>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
+                  <div className="px-8 pb-3 pt-8 sm:px-10 sm:pt-10 border-b">
+                    <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                      Lectures
+                    </p>
+                    <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                      Here you can check your progress on lectures!
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-start justify-center space-y-3 px-8 pb-3 pt-3 sm:px-10">
+                    <div className="flex flex-col items-start justify-center">
+                      <span className="text-lg pb-1">Physics</span>
+                      <span className="text-sm">You&apos;ve attended 16 lectures out of 53.</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                    <div className="flex flex-col items-start justify-center">
+                      <span className="text-lg pb-1">Chemistry</span>
+                      <span className="text-sm">You&apos;ve attended 16 lectures out of 53.</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                    <div className="flex flex-col items-start justify-center">
+                      <span className="text-lg pb-1">Maths</span>
+                      <span className="text-sm">You&apos;ve attended 16 lectures out of 53.</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                    <div className="flex flex-col items-start justify-center">
+                      <span className="text-lg pb-1">English</span>
+                      <span className="text-sm">You&apos;ve attended 16 lectures out of 53.</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                    <div className="flex flex-col items-start justify-center">
+                      <span className="text-lg pb-1">Computer Science</span>
+                      <span className="text-sm">You&apos;ve attended 16 lectures out of 53.</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
+              </div>
+              <div className="relative max-lg:row-start-1">
+                <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"></div>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
+                  <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                    <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Performance</p>
+                    <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                      You&apos;ve been doing great! Keep up the good work.
+                    </p>
+                  </div>
+                  <div className="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
+                    <ProgressCircle />
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]"></div>
+              </div>
+              <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
+                <div className="absolute inset-px rounded-lg bg-white"></div>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
+                  <div className="px-8 pt-5 sm:px-10 sm:pt-10">
+                    <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Upcoming Tests</p>
+                    <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                      You&apos;ve an upcoming test on 25th November, 2024.
+                    </p>
+                  </div>
+                  <div className="flex flex-col space-y-3 items-start justify-center px-8 pt-8  pb-3 sm:px-10 sm:pt-10">
+                    <span className="text-lg">Subject: Physics</span>
+                    <span className="">Syllabus: Simple Harmonic Motion (SHM)</span>
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
+              </div>
+              <div className="relative lg:row-span-2">
+                <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
+                  <div className="px-8 pb-3 pt-8 sm:px-10 sm:pt-10 border-b">
+                    <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                      Practice
+                    </p>
+                    <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                      Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget sem sodales gravida.
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-start justify-center space-y-5 px-8 pb-3 pt-5 sm:px-10">
+                    <div className="flex flex-col space-y-1 items-start justify-center">
+                      <span className="text-lg pb-1">Quizzes</span>
+                      <span className="text-sm">Practice by giving quizzes and check your paper-solving speed!</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                    <div className="flex flex-col space-y-1 items-start justify-center">
+                      <span className="text-lg pb-1">PYQs</span>
+                      <span className="text-sm">Practice by attempting Previous Year Questions!</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                    <div className="flex flex-col space-y-1 items-start justify-center">
+                      <span className="text-lg pb-1">Miscellaneous Questions</span>
+                      <span className="text-sm">Practice by solving some of the best questions to strengthen your learning!</span>
+                      <button className="text-red-500 text-sm">Continue learning</button>
+                    </div>
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <span className="flex items-center justify-center bg-white text-xl pb-3">Test Form</span>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center bg-white space-y-3 pb-5">
+          <input type="text" name="name" placeholder="Name" className="rounded-xl border p-2 border-cyan-500 outline-0 ring-0" onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" className="rounded-xl border p-2 border-cyan-500 outline-0 ring-0" onChange={handleChange} required />
+          <textarea name="message" placeholder="Your message" className="rounded-xl border p-2 border-cyan-500 outline-0 ring-0" onChange={handleChange} required />
+          <button type="submit" className="rounded-xl border p-2 px-10 border-pink-500 outline-0 ring-0 hover:bg-pink-500 hover:text-white">Submit</button>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 }
