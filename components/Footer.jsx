@@ -1,77 +1,81 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 // import { HashLink } from 'react-router-hash-link'
 
 function Footer() {
   return (
-    <div className='flex items-center justify-center bg-gradient-to-br from-[#2C1051] via-[#2C1051] to-[#4F53BC73]'>
-    <div className="pt-10 ab:py-10 w-[80%] drop-shadow-md shadow-black text-white text-xs sm:text-base">
-      <div className="flex items-start justify-start md:space-x-20 border-b-2 border-white ab:pb-20 border-opacity-55 space-x-5 pb-5">
-        <div className="flex space-y-3 items-center justify-start flex-col">
+    <div className='flex items-center justify-center font-light bg-[#861721]'>
+    <div className="pt-10 ab:py-10 w-[90%] drop-shadow-md shadow-black text-white text-xs sm:text-base">
+      <div className="flex items-start justify-start ab:pb-20 border-opacity-55 pb-5">
+        <div className="flex space-y-3 items-start justify-start text-sm flex-col">
           <span className="text-[#FFC107] tracking-wider text-3xl font-extralight">
-            LOGO
+            <Image src={"/udsLogo.png"} alt='logo' width={300} height={300} unoptimized />
           </span>
+          <span className='w-1/2 text-sm'>UDYA DBANU SAHASRABHA FOUNDATION, we are dedicated to transforming communities through knowledge, skills, and compassion.</span>
           <div className="flex flex-col space-y-5 tracking-wider font-extralight">
-            <div className="flex items-center justify-center space-x-3">
-            <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/mail.png" alt="mail"/>
-              <span>
-                <a href="mailto:">MAIL ID</a>
-              </span>
-            </div>
-            <div className="flex justify-center space-x-3 pl-7">
-                <img width="25" height="25" src="https://img.icons8.com/ios/50/phone--v1.png" alt="phone--v1"/>
-              <span>Contact no.</span>
+            <span className='font-semibold text-xl'>Subscribe to our newsletter</span>
+            <div className='border border-black w-fit'>
+              <input name='email' type='email' placeholder='Your Email Address' className='outline-0 ring-0 text-black p-3 bg-transparent' />
+              <button className='bg-[#042D41] p-3 px-5'>&#11166;</button>
             </div>
           </div>
         </div>
-        <div className="flex sm:items-start space-y-10 flex-col justify-start">
+        <div className="flex sm:items-start space-x-10 justify-start text-sm font-light">
           <div className="flex flex-col items-start justify-start space-y-7">
-            <a href="/" className="hover:text-[#FFC107]">
-              <span>HOME</span>
-            </a>
+            <span className='text-2xl font-semibold'>Quick <span className='text-[#042D41]'>Links</span></span>
+            <Link href="/" className="hover:text-[#FFC107]">
+              <span>Mission</span>
+            </Link>
             <Link href={"/"}>
               <span className="hover:text-[#FFC107]">
-                <span>ABOUT US</span>
+                <span>Contact Us</span>
               </span>
             </Link>
-            <a href="/properties" className="hover:text-[#FFC107]">
-              <span>PROPERTIES</span>
-            </a>
+            <Link href="/" className="hover:text-[#FFC107]">
+              <span>Privacy Policy</span>
+            </Link>
             <Link href={"/"}>
               <span className="hover:text-[#FFC107]">
-                <span>CONTACT</span>
+                <span>Terms & Conditions</span>
+              </span>
+            </Link>
+            <Link href={"/"}>
+              <span className="hover:text-[#FFC107]">
+                <span>Refund Policy</span>
               </span>
             </Link>
           </div>
-          {/* <div className="flex sm:items-center justify-center flex-col space-y-5">
-            <span className="tracking-wider font-extralight pr-0.5 text-[10px]">
-              DIRECTLY CONTACT US ON
-            </span>
-            <div className="bg-[#96969640] bg-opacity-25 flex items-center justify-center space-x-2 ab:space-x-3 px-4 py-2 rounded-3xl shadow-md shadow-slate-900 mr-2">
-              <img
-                src="image 6.png"
-                alt="whatsappIcon"
-                className="w-7 ab:w-full"
-              />
-              <a href="https://wa.me/+919315309388">
-                <span className="text-[#89E4D6] tracking-wider ab:text-2xl font-extralight">
-                  WHATSAPP
-                </span>
-              </a>
+          <div className="flex flex-col items-start justify-start space-y-7">
+            <span className='text-2xl font-semibold'>Contact <span className='text-[#042D41]'>Us</span></span>
+            <a href="/" className="hover:text-[#FFC107] flex items-start justify-center space-x-2">
+              <Image src={"/locationIcon.png"} alt='address' width={10} height={20} unoptimized className='pt-1' />
+              <span className='w-56'>Floor Grd, Kumbharwada 4th Wad KK Krishnan Menan Marg Dharavi S.O Mumbai</span>
+            </a>
+            <div className="flex items-center justify-center space-x-3">
+              <Image src={"/mailIcon.png"} alt='mail' width={13} height={10} />
+              <span>
+                <a href="mailto:">info@udsngo.org</a>
+              </span>
             </div>
-          </div> */}
+            <div className="flex items-center justify-center space-x-3">
+              <Image src={"/phoneIcon.png"} alt='phone' width={13} height={10} />
+              <span>+91 9398493657</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="flex items-start justify-center pt-10 -space-x-4 sm:space-x-2 px-2 pb-10">
-        <div className='h-fit'>
-            <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/copyright.png" className='' alt="copyright"/>
+      <div className="flex items-center justify-between w-full text-sm pt-10 px-2 pb-10">
+        <div className='flex items-center justify-center font-extralight space-x-7'>
+            <span>Terms & Conditions</span>
+            <span>Privacy Policy</span>
         </div>
-        <span className="text-center tracking-wider font-extralight text-xs ab:text-base">
-          2024 ALL RIGHTS RESERVED | POWERED BY{" "}
-          <span className="text-[#FFC107]">UDS Foundation</span>
-          <br></br>
-          DISCLAIMER
-        </span>
+        <div className="flex items-center justify-center space-x-5 font-extralight text-xs ab:text-base">
+          <Image src={"/facebookIcon.png"} alt='fb' width={8} height={10} unoptimized />
+          <Image src={"/twitterIcon.png"} alt='fb' width={15} height={10} unoptimized />
+          <Image src={"/LinkedinIcon.png"} alt='fb' width={15} height={10} unoptimized />
+          <Image src={"/youtubeIcon.png"} alt='fb' width={17} height={10} unoptimized />
+        </div>
       </div>
     </div>
     </div>
