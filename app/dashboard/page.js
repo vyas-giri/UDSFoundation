@@ -1,26 +1,22 @@
+"use client";
 import React from 'react'
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import LeftHeroSection from '@/components/herosection/LeftHeroSection';
-import MiddleHeroSection from '@/components/herosection/MiddleHeroSection';
-import RightHeroSection from '@/components/herosection/RightHeroSection';
-import Testform from '@/util/TestForm';
+import LeftDashboard from '@/components/DashboardSections/LeftDashboard';
+import MiddleDashboard from '@/components/DashboardSections/MiddleDashboard';
+import RightDashboard from '@/components/DashboardSections/RightDashboard';
+import withAuth from '@/util/authHoc';
 
 function Dashboard() {
   return (
     <div>
-    <Navbar />
       <div>
-        <div className="flex bg-[#F3F3F3] space-x-7 items-stretch justify-end h-full">
-          <LeftHeroSection />
-          <MiddleHeroSection />
-          <RightHeroSection />
+        <div className="flex bg-[#F0F7FF] dark:bg-slate-600 items-center justify-between h-screen">
+          <LeftDashboard />
+          <MiddleDashboard />
+          <RightDashboard />
         </div>
-        <Testform />
-    </div>
-    <Footer />
+      </div>
     </div>
   )
 }
 
-export default Dashboard
+export default withAuth(Dashboard)

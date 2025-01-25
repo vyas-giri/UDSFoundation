@@ -2,18 +2,23 @@
 import React, { useState } from "react";
 
 // Import react-circular-progressbar module and styles
-import { CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 import ProgressProvider from "@/util/ProgressProvider";
 
-export const ProgressCircle = () => {
-  const [valueEnd, setValueEnd] = useState(40);
+export const ProgressCircle = ({value}) => {
+  const [valueEnd, setValueEnd] = useState(value);
   return (
-    <div style={{ padding: "10px 10px 10px 10px", margin: "auto" }}>
+    <div className="p-1">
       <Example>
         <ProgressProvider valueStart={0} valueEnd={valueEnd}>
-          {value => <CircularProgressbar value={value} text={`${value}`} />}
+          {(value) => (
+            <CircularProgressbarWithChildren value={value} styles={buildStyles({
+              pathColor: "red",
+            })}>
+              <div className=" font-bold">{value}%</div>
+            </CircularProgressbarWithChildren>)}
         </ProgressProvider>
       </Example>
     </div>
@@ -24,10 +29,7 @@ function Example(props) {
   return (
     <div>
       <div style={{ display: "flex" }}>
-        <div style={{ width: 120 }}>{props.children}</div>
-        <div style={{ marginLeft: 30 }}>
-          <p>{props.description}</p>
-        </div>
+        <div className="w-16">{props.children}</div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ export default function Accordion({type, content}) {
   return (
     <Popover className="relative z-20">
       <PopoverButton className="inline-flex items-center gap-x-1 outline-0 ring-0 border-0">
-        <span className='hover:scale-110 transform transition duration-300 hover:text-cyan-400'>{content?.title}</span>
+        <span className={`hover:scale-110 transform transition duration-300 ${type === "homepage" ? "text-[#861721]" : "text-white hover:text-cyan-400"}`}>{content?.title}</span>
         {/* {type === "text" && <span className='text-[#003F7D] font-semibold'>{content?.title}</span>} */}
         <ChevronDownIcon aria-hidden="true" className="size-5" />
       </PopoverButton>

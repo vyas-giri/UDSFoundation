@@ -16,3 +16,16 @@ export const coursesData = [
     {"id": 15, "name": "Vue JS", "category": "Opened", "status": "Active", "date": "2022-01-01", "time": "10:00 AM", "duration": "1 hour", "instructor": "John Doe", "price": "Free", "image": "/vue.png", "desc": "An open-source model-view-viewmodel front end JavaScript framework for building user interfaces & single-page applications."},
     {"id": 16, "name": "React JS", "category": "Opened", "status": "Active", "date": "2022-01-01", "time": "10:00 AM", "duration": "1 hour", "instructor": "John Doe", "price": "Free", "image": "/react.png", "desc": "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components."},
 ]
+
+export const messagesData = [
+    {"id": 1, "name": "John Doe", "message": "Lorem ipsum dolor sit amet.", "document": ["1st Chapter.doc", "2nd Chapter.doc"], "image": "/placeholderUser.png", "time": "9:54 A.M."},
+    {"id": 2, "name": "Will", "message": "Lorem ipsum dolor sit amet.", "document": ["1st Chapter.doc"], "image": "/placeholderUser.png", "time": "8:54 A.M."},
+    {"id": 3, "name": "Tim Abott", "message": "Lorem ipsum dolor sit amet.", "image": "/placeholderUser.png", "time": "4:16 P.M."},
+]
+
+export const ActivitiesData = [
+    {"id": 1, "name": "Periodic Table Tutorials", "date": "8-10 Jul 2025", "time": "8 A.M. - 10 A.M.", "address": "123, ABC Street, XYZ City"},
+    {"id": 2, "name": "Periodic Table Tutorials", "date": "8-10 Jul 2025", "time": "8 A.M. - 10 A.M.", "address": "123, ABC Street, XYZ City"},
+    {"id": 3, "name": "Periodic Table Tutorials", "date": "8-10 Jul 2025", "time": "8 A.M. - 10 A.M.", "address": "123, ABC Street, XYZ City"},
+    {"id": 4, "name": "Periodic Table Tutorials", "date": "8-10 Jul 2025", "time": "8 A.M. - 10 A.M.", "address": "123, ABC Street, XYZ City"},
+]
