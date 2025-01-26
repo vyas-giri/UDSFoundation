@@ -5,7 +5,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='flex items-center justify-center font-light bg-[#861721]'>
+    <div className='flex items-center justify-center font-light bg-[#861721] w-full'>
     <div className="pt-10 ab:py-10 w-[90%] drop-shadow-md shadow-black text-white text-xs sm:text-base">
       <div className="flex items-start justify-start ab:pb-20 border-opacity-55 pb-5">
         <div className="flex space-y-3 items-start justify-start text-sm flex-col">
