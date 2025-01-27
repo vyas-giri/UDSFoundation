@@ -31,7 +31,7 @@ const sections = [
 ]
 
 function LeftDashboard() {
-  const [section, setSection] = useState("home")
+  const [section, setSection] = useState("Home")
 
   const handleSignOut = async () => {
     try {

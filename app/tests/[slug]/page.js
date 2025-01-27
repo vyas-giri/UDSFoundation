@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { testsData } from '@/util/placeholderData';
+import Image from 'next/image';
+import Link from 'next/link';
 
 function Page({ params }) {
     const slug = params.slug;
@@ -10,7 +12,13 @@ function Page({ params }) {
 
     const [currentSection, setCurrentSection] = useState(test.tests[0].subject);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [selectedOptions, setSelectedOptions] = useState({}); // Keep track of selections
+    const [selectedOptions, setSelectedOptions] = useState({});
+    const [submitting, setSubmitting] = useState(false);
+    const [showAnalysis, setShowAnalysis] = useState(false);
+
+    const handleSubmit = () => {
+        setSubmitting(true);
+    }
 
     const handleOptionChange = (questionId, selectedIndex) => {
         setSelectedOptions((prev) => ({
@@ -33,11 +41,11 @@ function Page({ params }) {
     };
 
     return (
-        <div className="bg-white flex items-center justify-center flex-col w-full">
+        <div className={`bg-white flex items-center justify-center flex-col w-full`}>
             <Navbar />
-            <div className="flex w-full flex-col items-center justify-center -space-y-14 pb-5">
+            <div className={`flex w-full flex-col items-center justify-center -space-y-14 pb-3`}>
                 <div className="bg-[#861721] w-full flex items-center justify-center">
-                    <div className="text-white text-center pb-16 flex items-center justify-between w-[80%] px-10 pt-10">
+                    <div className={`text-white text-center pb-16 flex items-center justify-between w-[80%] px-10 pt-10 ${submitting || showAnalysis && 'blur-sm'}`}>
                         {test?.tests.map((i, index) => (
                             <button
                                 key={index}
@@ -51,7 +59,7 @@ function Page({ params }) {
                         ))}
                     </div>
                 </div>
-                <div className="bg-white rounded-2xl shadow-lg shadow-[#00000030] mb-10 flex flex-col py-10 items-center space-y-5 justify-start text-black w-[80%]">
+                <div className={`bg-white rounded-2xl shadow-lg shadow-[#00000030] mb-10 flex flex-col py-10 items-center space-y-5 justify-start text-black w-[80%] ${submitting || showAnalysis && 'blur-sm'}`}>
                     <div className="bg-[#FFF5C1] p-3 rounded-md w-[80%] flex items-start justify-center flex-col space-y-2 border-2 border-[#861721]">
                         <span className="text-[#861721] text-lg font-bold">
                             Question {currentQuestion + 1}
@@ -90,11 +98,20 @@ function Page({ params }) {
                             })}
                     </div>
                     <div className="flex items-center justify-end w-[80%]">
+                        {test.tests[test?.tests.length - 1].questions[test?.tests[test?.tests.length - 1].questions.length - 1].id !== test?.tests
+                                .find((i) => i.subject === currentSection)
+                                ?.questions[currentQuestion].id && 
                         <button
                             className="px-10 py-2 text-white bg-[#003F7D] font-semibold rounded-lg"
                             onClick={handleNext}>
                             Next
-                        </button>
+                        </button>}
+                        {test.tests[test?.tests.length - 1].questions[test?.tests[test?.tests.length - 1].questions.length - 1].id === test?.tests
+                                .find((i) => i.subject === currentSection)
+                                ?.questions[currentQuestion].id && 
+                        <button onClick={handleSubmit} className="px-10 py-2 text-white bg-[#003F7D] font-semibold rounded-lg">
+                            Submit
+                        </button>}
                     </div>
                 </div>
             </div>
@@ -112,6 +129,26 @@ function Page({ params }) {
                         </button>
                     ))}
             </div>
+            {submitting && <div className='absolute top-[40vh] rounded-2xl left-[40vw] flex items-center justify-center bg-white p-10 flex-col space-y-3 shadow-lg shadow-[#00000030]'>
+                <Image src={'/bookIcon.png'} alt='submit?' width={80} height={80} />
+                <span className='text-black'>Do you want to submit the test?</span>
+                <div className='flex items-center justify-center space-x-5 text-sm'>
+                    <button className='p-0.5 px-5 border-2 border-[#861721] text-[#861721] rounded-lg' onClick={() => setSubmitting(false)}>No</button>
+                    <button 
+                    onClick={() => {
+                        setShowAnalysis(true)
+                        setSubmitting(false)
+                    }}
+                    className='p-1 px-5 bg-[#861721] rounded-lg text-white'>Yes</button>
+                </div>
+            </div>}
+            {showAnalysis && <div className='absolute top-[40vh] rounded-2xl left-[40vw] flex items-center justify-center bg-white p-10 flex-col space-y-3 shadow-lg shadow-[#00000030]'>
+                <Image src={'/checkIconWBg.png'} alt='submit?' width={80} height={80} />
+                <span className='text-black'>Test Completed Successfully</span>
+                <div className='flex items-center justify-center space-x-5 text-sm'>
+                    <Link href={`/tests/analysis/${test?.id}`} className='p-1 px-5 bg-[#861721] rounded-lg text-white'>View Analysis</Link>
+                </div>
+            </div>}
             <Footer />
         </div>
     );

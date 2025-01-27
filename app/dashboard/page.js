@@ -9,7 +9,7 @@ function Dashboard() {
   return (
     <div>
       <div>
-        <div className="flex bg-[#F0F7FF] dark:bg-slate-600 items-center justify-between h-screen">
+        <div className="flex bg-[#F0F7FF] dark:bg-slate-600 items-center justify-between h-screen overflow-y-hidden">
           <LeftDashboard />
           <MiddleDashboard />
           <RightDashboard />
