@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const CustomChart = () => {
+const CustomChart = ({labels, datasets, yMax, stepSize}) => {
 
     const createGradient = (ctx) => {
         const gradient = ctx.createLinearGradient(0, 0, 0, 400); // Vertical gradient
@@ -32,21 +32,16 @@ const CustomChart = () => {
       };
 
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr"],
-    datasets: [
-      {
-        label: "Performance",
-        data: [65, 59, 80, 81, 56, 55],
-        borderColor: "rgba(255, 114, 114, 1)",
-        backgroundColor: (ctx) => {
-            const chart = ctx.chart;
-            const { ctx: canvasContext } = chart;
-            return createGradient(canvasContext);
-        },
-        tension: 0.4,
-        fill: 'origin',
-      },
-    ],
+    labels: labels,
+    datasets: datasets?.map((i, index) => ({
+      label: i.label,
+      data: i.data,
+      borderColor: i.borderColor,
+      backgroundColor: i.backgroundColor,
+      pointBackgroundColor: i.backgroundColor,
+      tension: 0.4,
+      fill: i.fill,
+    })),
   };
 
   const options = {
@@ -63,10 +58,10 @@ const CustomChart = () => {
         },
         y: { // Single Y-axis configuration
           min: 0,
-          max: 100,
+          max: yMax,
           ticks: {
-            stepSize: 20, // Gaps of 20
-            color: "#000", // Optional: Customize text color
+            stepSize: stepSize,
+            color: "#000",
           },
           grid: {
             drawBorder: true,

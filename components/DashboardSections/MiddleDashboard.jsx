@@ -4,11 +4,14 @@ import { useTheme } from 'next-themes'
 import CustomChart from '../CustomChart';
 import { ProgressCircle } from '../ProgressCircle';
 import { messagesData } from '@/util/placeholderData';
+import { getReletivePosition } from "chart.js/helpers";
 
 
 function MiddleDashboard() {
     const { setTheme, resolvedTheme} = useTheme();
     const user = JSON.parse(localStorage.getItem("user"))
+
+
 
   return (
     <div className='flex flex-col items-center justify-start space-y-3 py-5 w-3/5 pr-5 h-screen overflow-y-scroll'>
@@ -40,7 +43,16 @@ function MiddleDashboard() {
         </div>
         <div className='flex items-start justify-start space-x-5 w-full'>
             <div className='w-2/3 h-80'>
-                <CustomChart />
+                <CustomChart labels={["Jan", "Feb", "Mar", "Apr"]} datasets={[
+                    {
+                        label: "Performance",
+                        data: [65, 59, 80, 81, 56, 55],
+                        borderColor: "#FF7272",
+                        backgroundColor: "rgba(255, 255, 255, 0)",
+                        tension: 0.4,
+                        fill: "origin",
+                      },
+                ]} yMax={100} stepSize={10} />
             </div>
             <div className='flex flex-col items-start justify-start bg-white rounded-xl p-5 overflow-y-scroll w-1/3 text-[#333333] font-semibold h-80'>
                 <span>Completion Progress</span>

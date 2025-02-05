@@ -35,18 +35,21 @@ export const test2Data = [
         subject: "Physics",
         questions: [
             {
-                id: "question1",
+                id: "question1Physics",
                 question: "What is the Unit of acceleration?",
                 options: ["m/s", "m/s^2", "m/s^3", "m/s^4"],
                 answer: 1,
+                solution: "Acceleration is the rate of change of velocity of an object with respect to time. The SI unit of acceleration is m/s^2.",
             },
             {
-                id: "question2",
+                id: "question2Physics",
                 question: "What is the Unit of force?",
                 options: ["kg.m/s^2", "kg.m/s", "kg.m/s^3", "kg.m/s^4"],
                 answer: 0,
+                solution: "Force is a push or pull upon an object resulting from the object's interaction with another object. The SI unit of force is kg.m/s^2.",
             },
         ],
+        totalMarks: 2,
     },
 ];
 
@@ -55,18 +58,21 @@ export const test3Data = [
         subject: "Chemistry",
         questions: [
             {
-                id: "question1",
+                id: "question1Chemistry",
                 question: "What is the bond angle around atom which uses sp3d2 hybridization?",
                 options: ["90", "109.5", "120", "180"],
                 answer: 1,
+                solution: "The bond angle around atom which uses sp3d2 hybridization is 90 degrees.",
             },
             {
-                id: "question2",
+                id: "question2Chemistry",
                 question: "What is the bond angle around atom which uses sp2 hybridization?",
                 options: ["90", "109.5", "120", "180"],
                 answer: 2,
+                solution: "The bond angle around atom which uses sp2 hybridization is 120 degrees.",
             },
         ],
+        totalMarks: 2,
     },
 ];
 
@@ -75,18 +81,21 @@ export const test4Data = [
         subject: "Maths",
         questions: [
             {
-                id: "question1",
+                id: "question1Maths",
                 question: "What is the value of i^2?",
                 options: ["-1", "1", "0", "i"],
                 answer: 0,
+                solution: "The value of i^2 is -1.",
             },
             {
-                id: "question2",
+                id: "question2Maths",
                 question: "What is the value of sin(0)?",
                 options: ["1", "0", "1/2", "2"],
                 answer: 1,
+                solution: "The value of sin(0) is 0.",
             },
         ],
+        totalMarks: 2,
     },
 ];
 
@@ -95,12 +104,14 @@ export const test5Data = [
         subject: "Aptitude",
         questions: [
             {
-                id: "question1",
+                id: "question1Aptitude",
                 question: "What is the date if today is 2nd Saturday of January, 1950?",
                 options: ["8th January", "9th January", "10th January", "11th January"],
                 answer: 1,
+                solution: "If today is 2nd Saturday of January, 1950, then today is 9th January, 1950.",
             },
         ],
+        totalMarks: 1,
     },
 ];
 
@@ -109,18 +120,21 @@ export const test6Data = [
         subject: "Ethics",
         questions: [
             {
-                id: "question1",
+                id: "question1Ethics",
                 question: "What is the most important thing in life?",
                 options: ["Money", "Happiness", "Love", "Peace"],
                 answer: 3,
+                solution: "The most important thing in life is Peace.",
             },
             {
-                id: "question2",
+                id: "question2Ethics",
                 question: "What is the most important thing in life?",
                 options: ["Money", "Happiness", "Love", "Peace"],
                 answer: 3,
+                solution: "The most important thing in life is Peace.",
             },
         ],
+        totalMarks: 2,
     },
 ];
 
@@ -129,18 +143,21 @@ export const test7Data = [
         subject: "GK",
         questions: [
             {
-                id: "question1",
+                id: "question1Gk",
                 question: "Who was the first President of India?",
                 options: ["Dr. Rajendra Prasad", "Dr. A.P.J. Abdul Kalam", "Dr. Zakir Hussain", "Dr. S. Radhakrishnan"],
                 answer: 0,
+                solution: "Dr. Rajendra Prasad was the first President of India.",
             },
             {
-                id: "question2",
+                id: "question2Gk",
                 question: "Who was the first Prime Minister of India?",
                 options: ["Jawaharlal Nehru", "Indira Gandhi", "Lal Bahadur Shastri", "Morarji Desai"],
                 answer: 0,
+                solution: "Jawaharlal Nehru was the first Prime Minister of India.",
             },
         ],
+        totalMarks: 2,
     },
 ];
 
@@ -154,14 +171,17 @@ export const test1Data = [
                 question: "What is the Unit of acceleration?",
                 options: ["m/s", "m/s^2", "m/s^3", "m/s^4"],
                 answer: 1,
+                solution: "Acceleration is the rate of change of velocity of an object with respect to time. The SI unit of acceleration is m/s^2.",
             },
             {
                 id: "question2Physics",
                 question: "What is the Unit of force?",
                 options: ["kg.m/s^2", "kg.m/s", "kg.m/s^3", "kg.m/s^4"],
                 answer: 0,
+                solution: "Force is a push or pull upon an object resulting from the object's interaction with another object. The SI unit of force is kg.m/s^2.",
             },
         ],
+        totalMarks: 2,
     },
     {
         subject: "Chemistry",
@@ -171,14 +191,17 @@ export const test1Data = [
                 question: "What is the bond angle around atom which uses sp3d2 hybridization?",
                 options: ["90", "109.5", "120", "180"],
                 answer: 1,
+                solution: "The bond angle around atom which uses sp3d2 hybridization is 90 degrees.",
             },
             {
                 id: "question2Chemistry",
                 question: "What is the bond angle around atom which uses sp2 hybridization?",
                 options: ["90", "109.5", "120", "180"],
                 answer: 2,
+                solution: "The bond angle around atom which uses sp2 hybridization is 120 degrees.",
             },
         ],
+        totalMarks: 2,
     },
     {
         subject: "Maths",
@@ -188,14 +211,17 @@ export const test1Data = [
                 question: "What is the value of i^2?",
                 options: ["-1", "1", "0", "i"],
                 answer: 0,
+                solution: "The value of i^2 is -1.",
             },
             {
                 id: "question2Maths",
                 question: "What is the value of sin(0)?",
                 options: ["1", "0", "1/2", "2"],
                 answer: 1,
+                solution: "The value of sin(0) is 0.",
             },
         ],
+        totalMarks: 2,
     },
     {
         subject: "Aptitude",
@@ -205,8 +231,10 @@ export const test1Data = [
                 question: "What is the date if today is 2nd Saturday of January, 1950?",
                 options: ["8th January", "9th January", "10th January", "11th January"],
                 answer: 1,
+                solution: "If today is 2nd Saturday of January, 1950, then today is 9th January, 1950.",
             },
         ],
+        totalMarks: 1,
     },
     {
         subject: "Ethics",
@@ -216,14 +244,17 @@ export const test1Data = [
                 question: "What is the most important thing in life?",
                 options: ["Money", "Happiness", "Love", "Peace"],
                 answer: 3,
+                solution: "The most important thing in life is Peace.",
             },
             {
                 id: "question2Ethics",
                 question: "What is the most important thing in life?",
                 options: ["Money", "Happiness", "Love", "Peace"],
                 answer: 3,
+                solution: "The most important thing in life is Peace.",
             },
         ],
+        totalMarks: 2,
     },
     {
         subject: "GK",
@@ -233,14 +264,17 @@ export const test1Data = [
                 question: "Who was the first President of India?",
                 options: ["Dr. Rajendra Prasad", "Dr. A.P.J. Abdul Kalam", "Dr. Zakir Hussain", "Dr. S. Radhakrishnan"],
                 answer: 0,
+                solution: "Dr. Rajendra Prasad was the first President of India.",
             },
             {
                 id: "question2Gk",
                 question: "Who was the first Prime Minister of India?",
                 options: ["Jawaharlal Nehru", "Indira Gandhi", "Lal Bahadur Shastri", "Morarji Desai"],
                 answer: 0,
+                solution: "Jawaharlal Nehru was the first Prime Minister of India.",
             },
         ],
+        totalMarks: 2,
     },
 ]
 

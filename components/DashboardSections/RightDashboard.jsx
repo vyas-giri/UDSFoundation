@@ -31,7 +31,7 @@ function RightDashboard() {
                     <ChevronDownIcon className='w-5' />
                 </button>
                 {isOpen && (
-                    <button className="py-2 text-[#5F6265] font-extralight text-sm hover:bg-[#D40000] text-center hover:text-white rounded-lg w-full">
+                    <button onClick={handleSignOut} className="py-2 text-[#5F6265] font-extralight text-sm hover:bg-[#D40000] text-center hover:text-white rounded-lg w-full">
                     Sign Out
                     </button>
                 )}

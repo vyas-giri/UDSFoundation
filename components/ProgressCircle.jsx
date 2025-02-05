@@ -17,7 +17,7 @@ export const ProgressCircle = ({value}) => {
             <CircularProgressbarWithChildren value={value} styles={buildStyles({
               pathColor: "red",
             })}>
-              <div className=" font-bold">{value}%</div>
+              <div className="text-black font-bold">{value}%</div>
             </CircularProgressbarWithChildren>)}
         </ProgressProvider>
       </Example>

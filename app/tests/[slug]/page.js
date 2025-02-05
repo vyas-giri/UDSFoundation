@@ -25,6 +25,7 @@ function Page({ params }) {
             ...prev,
             [questionId]: selectedIndex, // Update the selected option for the specific question
         }));
+        localStorage.setItem("selectedOptions", JSON.stringify(selectedOptions));
     };
 
     const handleNext = () => {
@@ -45,7 +46,7 @@ function Page({ params }) {
             <Navbar />
             <div className={`flex w-full flex-col items-center justify-center -space-y-14 pb-3`}>
                 <div className="bg-[#861721] w-full flex items-center justify-center">
-                    <div className={`text-white text-center pb-16 flex items-center justify-between w-[80%] px-10 pt-10 ${submitting || showAnalysis && 'blur-sm'}`}>
+                    <div className={`text-white text-center pb-16 flex items-center justify-between w-[80%] px-10 pt-10 ${showAnalysis && 'blur-sm'} ${submitting && 'blur-sm'}`}>
                         {test?.tests.map((i, index) => (
                             <button
                                 key={index}
@@ -59,7 +60,7 @@ function Page({ params }) {
                         ))}
                     </div>
                 </div>
-                <div className={`bg-white rounded-2xl shadow-lg shadow-[#00000030] mb-10 flex flex-col py-10 items-center space-y-5 justify-start text-black w-[80%] ${submitting || showAnalysis && 'blur-sm'}`}>
+                <div className={`bg-white rounded-2xl shadow-lg shadow-[#00000030] mb-10 flex flex-col py-10 items-center space-y-5 justify-start text-black w-[80%] ${showAnalysis && 'blur-sm'} ${submitting && 'blur-sm'}`}>
                     <div className="bg-[#FFF5C1] p-3 rounded-md w-[80%] flex items-start justify-center flex-col space-y-2 border-2 border-[#861721]">
                         <span className="text-[#861721] text-lg font-bold">
                             Question {currentQuestion + 1}
@@ -75,10 +76,7 @@ function Page({ params }) {
                         {test?.tests
                             .find((i) => i.subject === currentSection)
                             ?.questions[currentQuestion].options.map((option, index) => {
-                                const questionId =
-                                    test?.tests
-                                        .find((i) => i.subject === currentSection)
-                                        ?.questions[currentQuestion].id;
+                                const questionId =test?.tests.find((i) => i.subject === currentSection)?.questions[currentQuestion].id;
                                 const isSelected = selectedOptions[questionId] === index;
 
                                 return (
